@@ -9,12 +9,12 @@ priyansh_root.title("Image Displayer")
 # 1 
 
 # Width x Height
-priyansh_root.geometry("644x434")
+# priyansh_root.geometry("644x434")
 
 
-# Width,height
-priyansh_root.minsize(300,100)
-priyansh_root.maxsize(1200,988)
+# # Width,height
+# priyansh_root.minsize(300,100)
+# priyansh_root.maxsize(1200,988)
 
 # 2
 
@@ -117,47 +117,77 @@ priyansh_root.maxsize(1200,988)
 
 # 8 -- Travel Forms using CheckButtons & Entry Widgets
 
-def getvals():
-    print("Submitting Form")
-    print(namevalue.get())
-    print(phonevalue.get())
-    print(gendervalue.get())
-    print(emergencyvalue.get())
-    print(paymentmodevalue.get())
-    print(foodservicevalue.get())
-    with open("records.txt","w") as f:
-        f.write(f"{namevalue.get() , phonevalue.get() , gendervalue.get() , emergencyvalue.get() , paymentmodevalue.get() , foodservicevalue.get()}\n")
+# def getvals():
+#     print("Submitting Form")
+#     print(namevalue.get())
+#     print(phonevalue.get())
+#     print(gendervalue.get())
+#     print(emergencyvalue.get())
+#     print(paymentmodevalue.get())
+#     print(foodservicevalue.get())
+#     with open("records.txt","w") as f:
+#         f.write(f"{namevalue.get() , phonevalue.get() , gendervalue.get() , emergencyvalue.get() , paymentmodevalue.get() , foodservicevalue.get()}\n")
 
-Label(priyansh_root,text="Welcome to Ghumakkar Travels",padx=32,font="comicsansms 13 bold").grid(row=0,column= 3)
-name = Label(priyansh_root,text="Name")
-phone = Label(priyansh_root,text="Phone")
-gender = Label(priyansh_root,text="Gender")
-emergency = Label(priyansh_root,text="Emergency Contact")
-paymentmode = Label(priyansh_root,text="Payment Mode")
+# Label(priyansh_root,text="Welcome to Ghumakkar Travels",padx=32,font="comicsansms 13 bold").grid(row=0,column= 3)
+# name = Label(priyansh_root,text="Name")
+# phone = Label(priyansh_root,text="Phone")
+# gender = Label(priyansh_root,text="Gender")
+# emergency = Label(priyansh_root,text="Emergency Contact")
+# paymentmode = Label(priyansh_root,text="Payment Mode")
 
-name.grid(row=1,column=2)
-phone.grid(row=2,column=2)
-gender.grid(row=3,column=2)
-emergency.grid(row=4,column=2)
-paymentmode.grid(row=5,column=2)
+# name.grid(row=1,column=2)
+# phone.grid(row=2,column=2)
+# gender.grid(row=3,column=2)
+# emergency.grid(row=4,column=2)
+# paymentmode.grid(row=5,column=2)
 
-namevalue = StringVar()
-phonevalue = StringVar()
-gendervalue = StringVar()
-emergencyvalue = StringVar()
-paymentmodevalue = StringVar()
-foodservicevalue = IntVar()
+# namevalue = StringVar()
+# phonevalue = StringVar()
+# gendervalue = StringVar()
+# emergencyvalue = StringVar()
+# paymentmodevalue = StringVar()
+# foodservicevalue = IntVar()
 
-nameentry = Entry(priyansh_root,textvariable=namevalue).grid(row=1,column=3)
-phoneentry = Entry(priyansh_root,textvariable=phonevalue).grid(row=2,column=3)
-genderentry = Entry(priyansh_root,textvariable=gendervalue).grid(row=3,column=3)
-emergencyentry = Entry(priyansh_root,textvariable=emergencyvalue).grid(row=4,column=3)
-paymentmodeentry = Entry(priyansh_root,textvariable=paymentmodevalue).grid(row=5,column=3)
+# nameentry = Entry(priyansh_root,textvariable=namevalue).grid(row=1,column=3)
+# phoneentry = Entry(priyansh_root,textvariable=phonevalue).grid(row=2,column=3)
+# genderentry = Entry(priyansh_root,textvariable=gendervalue).grid(row=3,column=3)
+# emergencyentry = Entry(priyansh_root,textvariable=emergencyvalue).grid(row=4,column=3)
+# paymentmodeentry = Entry(priyansh_root,textvariable=paymentmodevalue).grid(row=5,column=3)
 
-foodservice = Checkbutton(text="Want to get your meals ?",variable=foodservicevalue)
-foodservice.grid(row=6,column=3)
+# foodservice = Checkbutton(text="Want to get your meals ?",variable=foodservicevalue)
+# foodservice.grid(row=6,column=3)
 
-Button(text="Submit to Ghumakkar Travels",command=getvals).grid(row=8,column=3)
+# Button(text="Submit to Ghumakkar Travels",command=getvals).grid(row=8,column=3)
+
+# 9 -- Canvas Widget
+
+# canvas_width = 800
+# canvas_height = 400
+
+# priyansh_root.geometry(f"{canvas_width}x{canvas_height}")
+# can_widget = Canvas(priyansh_root,width=canvas_width,height=canvas_height)
+# can_widget.pack()
+
+# # the line goes from x1,y1 to x2,y2
+
+# can_widget.create_line(0,0,800,400,fill="red")
+# can_widget.create_line(0,400,800,0,fill="red")
+
+# # the rectangle goes from top-left to bottom-right
+# can_widget.create_rectangle(3,5,700,300,fill="blue")
+
+# can_widget.create_text(200,200,text="python")
+
+# 10 -- Handling Events 
+
+def myval(event):
+    print("Button Clicked")
+
+widget =  Button(priyansh_root,text="Click me please")
+widget.pack()
+
+widget.bind('<Button-1>',myval)
+widget.bind('<Double-1>', quit)
 
 # GUI Logic
 
