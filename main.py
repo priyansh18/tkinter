@@ -1,10 +1,10 @@
 from tkinter import *
-
+import tkinter.messagebox as tsmg
 from PIL import Image,ImageTk
 
 
-priyansh_root = Tk()
-priyansh_root.title("Image Displayer")
+# priyansh_root = Tk()
+# priyansh_root.title("Image Displayer")
 
 # 1 
 
@@ -180,15 +180,166 @@ priyansh_root.title("Image Displayer")
 
 # 10 -- Handling Events 
 
-def myval(event):
-    print("Button Clicked")
+# def myval(event):
+#     print("Button Clicked")
 
-widget =  Button(priyansh_root,text="Click me please")
-widget.pack()
+# widget =  Button(priyansh_root,text="Click me please")
+# widget.pack()
 
-widget.bind('<Button-1>',myval)
-widget.bind('<Double-1>', quit)
+# widget.bind('<Button-1>',myval)
+# widget.bind('<Double-1>', quit)
 
+
+# 11 -- Menus & SubMenus
+
+# ## Menu without Dropdown
+
+# def myfunc():
+#     print("My Name is Function I will only Execute If Someone Calls Me ....")
+
+# def help():
+#     print("I will help u")
+#     tsmg.showinfo("help","I will help u  ")
+
+# def rate():
+#     print("Rate Us")
+#     value = tsmg.askquestion("Was your Experience good ?","You used this GUI... was your Experience good ?")
+#     print(value)
+#     if value == "yes":
+#         msg =  "Great. rate us on appstore please"
+#     else:
+#         msg = "Tell us what went wrong ? We will call you soon"
+#     tsmg.showinfo("Experience",msg)
+
+
+# # mymenu = Menu(priyansh_root)
+# # mymenu.add_command(label="File",command = myfunc)
+# # mymenu.add_command(label="Exit",command = quit)
+
+# # priyansh_root.config(menu=mymenu)
+
+# ## Menu with Dropdown
+
+# mainmenu = Menu(priyansh_root)
+# m1 = Menu(mainmenu,tearoff=0)
+# m1.add_command(label="New project",command = myfunc)
+# m1.add_command(label="Save",command = myfunc)
+# m1.add_separator()
+# m1.add_command(label="Save as",command = myfunc)
+# m1.add_command(label="Print",command = myfunc)
+
+# priyansh_root.config(menu = mainmenu)
+
+# mainmenu.add_cascade(label="File",menu=m1)
+
+# m2 = Menu(mainmenu,tearoff=0)
+# m2.add_command(label="Cut",command = myfunc)
+# m2.add_command(label="Copy",command = myfunc)
+# m2.add_separator()
+# m2.add_command(label="Paste",command = myfunc)
+# m2.add_command(label="Find",command = myfunc)
+
+# priyansh_root.config(menu = mainmenu)
+# mainmenu.add_cascade(label="Edit",menu=m2)
+
+
+# m3 = Menu(mainmenu,tearoff=0)
+# m3.add_command(label="help",command = help)
+# m3.add_command(label="rate us",command = rate)
+# mainmenu.add_cascade(label="Help",menu=m3)
+# priyansh_root.config(menu = mainmenu)
+
+# 12 -- Sliders using Scale
+
+# def getDollar():
+#     print(f"We have credited {myslider.get()} dollars in your bank account")
+#     tsmg.showinfo("Amount Credited",f"We have credited {myslider.get()} dollars in your bank account")
+
+# Label(priyansh_root,text="How many dollars do you want ?").pack()
+# myslider = Scale(priyansh_root,from_=0,to=100,orient=HORIZONTAL,tickinterval=50)
+# myslider.set(33)
+# myslider.pack()
+
+# Button(priyansh_root,text="Get Dollars!",pady=22,command=getDollar).pack()
+
+
+# 13 -- Creating RadioButtons
+
+# def order():
+#     tsmg.showinfo("Order Received",f"We have received your order for {var.get()}.Thanks for Ordering")
+
+# var = IntVar()
+# Label(priyansh_root,text="What would you like to have sir ?",font="lucida 19 bold",justify=LEFT,padx=14).pack()
+# radio = Radiobutton(priyansh_root,text="Dosa",padx=14,variable=var,value=1).pack(anchor="w")
+# radio = Radiobutton(priyansh_root,text="Idli",padx=14,variable=var,value=2).pack(anchor="w")
+# radio = Radiobutton(priyansh_root,text="Wada",padx=14,variable=var,value=3).pack(anchor="w")
+# radio = Radiobutton(priyansh_root,text="Samosa",padx=14,variable=var,value=4).pack(anchor="w")
+
+# Button(text="Order Now",command=order).pack()
+
+# 14 -- ListBox
+
+# def add():
+#     global i
+#     lbx.insert(ACTIVE,f"{i}")
+#     i+=1
+
+# i=0
+# lbx = Listbox(priyansh_root)
+# lbx.pack()
+# lbx.insert(END,"First Item of our Listbox")
+
+# Button(priyansh_root,text="Add Item",command=add).pack()
+
+# 15 -- ScrollBar
+# scrollbar = Scrollbar(priyansh_root)
+# scrollbar.pack(side=RIGHT,fill=Y)
+# listbox = Listbox(priyansh_root,yscrollcommand=scrollbar.set )
+# for i in range(344):
+#     listbox.insert(END,f"Item {i}")
+
+# scrollbar.config(command=listbox.yview)
+# listbox.pack()
+
+
+# 16 -- StatusBar
+
+# def upload():
+#     statusvar.set("Busy...")
+#     sbar.update()
+#     import time
+#     time.sleep(2)
+#     statusvar.set("Ready")
+
+# statusvar = StringVar()
+# statusvar.set("Ready")
+# sbar = Label(priyansh_root,textvariable=statusvar,relief=SUNKEN,anchor="w")
+# sbar.pack(side=BOTTOM,fill=X)
+# Button(priyansh_root,text="Upload",command=upload).pack()
+
+class GUI(Tk):
+    def __init__(self):
+        super().__init__()
+        self.geometry("744x377")
+    
+    def status(self):
+        self.var = StringVar()
+        self.var.set("Ready")
+        self.statusbar =  Label(self,textvar=self.var,relief=SUNKEN,anchor="w")
+        self.statusbar.pack(side=BOTTOM,fill=X)
+
+    def click(self):
+        print("Button Clicked")
+
+    def createButton(self,inptext):
+        Button(text=inptext,command=self.click).pack()
+
+if __name__ == "__main__":
+    window = GUI()
+    window.status()
+    window.createButton("Click Me")
+    window.mainloop()
 # GUI Logic
 
-priyansh_root.mainloop()
+
+# priyansh_root.mainloop()
